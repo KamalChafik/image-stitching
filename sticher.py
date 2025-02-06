@@ -59,7 +59,7 @@ def stitch_images(images):
 
 
 # Load images from directory
-pathfile = "./dataset/flower"
+pathfile = "./dataset/eclipse/"
 images = load_images_from_directory(pathfile)
 
 # Stitch images
