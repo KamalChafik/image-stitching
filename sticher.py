@@ -31,7 +31,7 @@ def stitch_images_opencv(images):
     return stitched_image
 
 # Load images
-pathfile = "./dataset/eclipse/"
+pathfile = "./dataset/flower/"
 images = load_images_from_directory(pathfile)
 
 # Stitch images
