@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import os
 
+
 def load_images_from_directory(pathfile):
     """
     Load all images from a directory and return them as a list.
@@ -13,7 +14,9 @@ def load_images_from_directory(pathfile):
     for filename in filenames:
         if filename.lower().endswith((".jpg", ".jpeg", ".png", ".bmp", ".tiff")):
             img_path = os.path.join(pathfile, filename)
-            img = cv2.imread(img_path, cv2.IMREAD_COLOR)  # Load as color image for consistency
+            img = cv2.imread(
+                img_path, cv2.IMREAD_COLOR
+            )  # Load as color image for consistency
             if img is not None:
                 images.append(img)
             else:
@@ -23,6 +26,7 @@ def load_images_from_directory(pathfile):
         raise ValueError("At least two valid images are required for stitching.")
 
     return images
+
 
 def stitch_images_opencv(images):
     """
@@ -38,13 +42,17 @@ def stitch_images_opencv(images):
 
     return stitched_image
 
+
 # Load images
-pathfile = "./dataset/niagara/"
+pathfile = "./dataset/mac"
 try:
     images = load_images_from_directory(pathfile)
 
     # Stitch images
     result = stitch_images_opencv(images)
+    output_filename = "stitched_output.jpg"
+    cv2.imwrite(output_filename, result)
+    print(f"Stitched image saved as {output_filename}")
     if result is not None:
         cv2.imshow("Stitched Image", result)
         cv2.waitKey(0)
